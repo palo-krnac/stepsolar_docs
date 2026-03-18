@@ -1,0 +1,119 @@
+/* ============================================================
+   stepSOLAR — Clean & Modern Theme
+   ============================================================ */
+
+:root {
+  --brand-green: #2eb129;
+  --brand-blue:  #0077b6;
+  --light-bg:    #f8fbf8;
+}
+
+/* ── Globálne nastavenia ────────────────────────────── */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color:      #ffffff;
+  --md-default-fg-color:      #2c3e50;
+  --md-header-bg-color:       #ffffff;
+  --md-header-fg-color:       var(--brand-green);
+  --md-code-bg-color:         #f1f3f5;
+  --md-typeset-a-color:       var(--brand-blue);
+}
+
+/* ── Header & Typografia ────────────────────────────── */
+.md-header {
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.md-header__title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ── Navigácia (Tabs & Sidebar) ──────────────────────── */
+.md-tabs {
+  background-color: var(--light-bg);
+  border-bottom: 1px solid #eef2ee;
+}
+
+.md-tabs__link--active, 
+.md-tabs__link:hover {
+  color: var(--brand-green) !important;
+  opacity: 1;
+}
+
+.md-nav__link--active {
+  color: var(--brand-green) !important;
+  font-weight: 700;
+  background-color: rgba(46, 177, 41, 0.05);
+  border-radius: 4px;
+}
+
+/* ── Tabuľky (Modbus & Pins) ────────────────────────── */
+/* Moderný "card" vzhľad pre tabuľky */
+.md-typeset table:not([class]) {
+  border: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  display: table;
+  width: 100%;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--light-bg);
+  color: var(--brand-green);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 12px 16px;
+}
+
+.md-typeset table:not([class]) td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Zvýraznenie registrov a adries */
+.reg-addr {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  background: #eef2ee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--brand-blue);
+  font-weight: 600;
+  font-size: 0.85em;
+}
+
+/* ── Admonitions (Upozornenia) ─────────────────────── */
+.md-typeset .admonition {
+  border-radius: 8px;
+  border-left-width: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+/* ── Mermaid diagramy ───────────────────────────────── */
+.mermaid {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0;
+  margin: 1em 0;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.md-footer {
+  background-color: var(--light-bg);
+}
+
+.md-copyright {
+  font-size: 0.75rem;
+  color: #7f8c8d;
+}
+
+/* ── Mobile Optimization ─────────────────────────────── */
+@media screen and (max-width: 60em) {
+  .md-nav--primary .md-nav__title {
+    background-color: var(--brand-green);
+    color: white;
+  }
+}

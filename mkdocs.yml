@@ -1,0 +1,139 @@
+site_name: stepSOLAR
+site_description: Solar Water Heater Inverter Controller — ESP32-S3 based MPPT controller
+site_url: https://stepsolar.telemetry.digital
+site_author: Palo Krnac
+repo_url: https://github.com/palo-krnac/stepSOLAR
+repo_name: palo-krnac/stepSOLAR
+edit_uri: edit/main/docs/
+
+copyright: "&copy; 2024 Palo Krnac — stepSOLAR"
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
+
+  palette:
+    # Svetlá téma (východzia)
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: light green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # Tmavá téma (slate)
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: light green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.follow
+    - header.autohide
+
+  icon:
+    repo: fontawesome/brands/github
+    admonition:
+      note: octicons/tag-16
+      warning: octicons/alert-16
+      danger: octicons/stop-16
+      tip: octicons/light-bulb-16
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/palo-krnac/stepSOLAR
+      name: GitHub
+  generator: false
+
+plugins:
+  - search:
+      lang: en
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - def_list
+  - toc:
+      permalink: true
+      title: On this page
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Quick Start: getting-started/quickstart.md
+    - Requirements: getting-started/requirements.md
+    - Flashing: getting-started/flashing.md
+  - Hardware:
+    - Overview: hardware/overview.md
+    - Schematic: hardware/schematic.md
+    - Pin Mapping: hardware/pinmap.md
+    - ADS1115 Wiring: hardware/ads1115.md
+    - 24LC256 EEPROM: hardware/eeprom.md
+    - RS485 Interface: hardware/rs485.md
+  - Firmware:
+    - Architecture: firmware/architecture.md
+    - MPPT Algorithm: firmware/mppt.md
+    - Dual-Core Design: firmware/dualcore.md
+    - Configuration: firmware/configuration.md
+    - Building: firmware/building.md
+  - Web Interface:
+    - Overview: web/overview.md
+    - Monitor Tab: web/monitor.md
+    - Control Tab: web/control.md
+    - Settings Tab: web/settings.md
+    - WiFi & Time: web/wifi-time.md
+    - Localization: web/localization.md
+  - Modbus RTU:
+    - Overview: modbus/overview.md
+    - Register Map: modbus/registers.md
+    - RS485 Settings: modbus/rs485.md
+  - ESPHome:
+    - Integration: esphome/integration.md
+    - YAML Reference: esphome/yaml.md
+  - Changelog: changelog/changelog.md
