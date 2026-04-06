@@ -1,98 +1,103 @@
 ---
-title: stepSOLAR Documentation
-description: Solar Water Heater Inverter Controller based on ESP32-S3
+title: stepSOLAR — Solar Water Heater Controller
+description: Open-source ESP32-S3 based MPPT inverter controller for solar water heating.
 hide:
   - navigation
   - toc
 ---
 
 <div class="hero">
-  <div class="hero-title">stepSOLAR</div>
-  <div class="hero-sub">Solar Water Heater Inverter Controller — ESP32-S3</div>
-  <div class="hero-badges">
+  <h1 class="hero-title">stepSOLAR</h1>
+  <p class="hero-sub">
+    Open-source MPPT Inverter Controller pre solárny ohrev vody. 
+    Postavený na ESP32-S3 s webovým rozhraním a Modbus RTU.
+  </p>
+  
+  <div class="hero-badges" markdown="1">
+[![GitHub](https://img.shields.io/badge/GitHub-palo--krnac%2FstepSOLAR-2eb129?style=flat&logo=github&logoColor=white)](https://github.com/palo-krnac/stepSOLAR)
+[![Version](https://img.shields.io/badge/firmware-v2.0.0-2eb129?style=flat)](changelog/changelog.md)
+[![Platform](https://img.shields.io/badge/platform-ESP32--S3-2eb129?style=flat&logo=espressif)](hardware/overview.md)
+[![License](https://img.shields.io/badge/license-MIT-2eb129?style=flat)](https://github.com/palo-krnac/stepSOLAR/blob/main/LICENSE)
+  </div>
 
-[![GitHub](https://img.shields.io/badge/GitHub-palo--krnac%2FstepSOLAR-3DD639?style=flat&logo=github&logoColor=white)](https://github.com/palo-krnac/stepSOLAR)
-[![Version](https://img.shields.io/badge/firmware-v2.0.0-3DD639?style=flat)](changelog/changelog.md)
-[![License](https://img.shields.io/badge/license-MIT-3DD639?style=flat)](https://github.com/palo-krnac/stepSOLAR/blob/main/LICENSE)
-[![Platform](https://img.shields.io/badge/platform-ESP32--S3-3DD639?style=flat&logo=espressif)](hardware/overview.md)
-[![PlatformIO](https://img.shields.io/badge/built%20with-PlatformIO-3DD639?style=flat)](firmware/building.md)
-
+  <div class="hero-actions">
+    <a href="getting-started/quickstart/" class="md-button md-button--primary">
+      :octicons-rocket-24: Quick Start
+    </a>
+    <a href="hardware/overview/" class="md-button">
+      :octicons-cpu-24: Hardware Docs
+    </a>
   </div>
 </div>
 
 ---
 
-**stepSOLAR** is an open-source solar water heater inverter controller that converts DC power from photovoltaic panels into AC rectangular waveform with variable duty cycle (MPPT). It runs on ESP32-S3, measures voltage, current and boiler temperature via ADS1115 ADC, stores configuration in 24LC256 EEPROM, and provides a responsive web interface with real-time monitoring.
+## O projekte
 
-## Key Features
+**stepSOLAR** je pokročilý solárny regulátor, ktorý transformuje jednosmerný prúd (DC) z fotovoltických panelov na striedavý obdĺžnikový priebeh s premenlivou striedou (**MPPT**). Systém je navrhnutý pre maximálnu efektivitu ohrevu vody v bojlery pri zachovaní bezpečnosti a plnej kontroly cez WiFi alebo priemyselnú zbernicu.
+
+---
+
+## Hlavné funkcie
 
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-solar-panel: **MPPT Control**
-
+-   :fontawesome-solid-solar-panel: **MPPT Riadenie**
     ---
+    Algoritmus **P&O (Hill-climbing)** s automatickým skenovaním VA krivky panela. Maximalizuje zisk energie za každého počasia.
 
-    Hill-climbing P&O algorithm with automatic VA curve scan. Maximizes power extraction from any PV panel configuration.
-
--   :fontawesome-solid-globe: **Web Interface**
-
+-   :fontawesome-solid-globe: **Web Rozhranie**
     ---
-
-    Responsive dashboard with real-time WebSocket telemetry, power history chart and multi-language support (EN / SK / PL / CS).
-
--   :fontawesome-solid-clock: **NTP Time Sync**
-
-    ---
-
-    Automatic time synchronization over WiFi with configurable timezone and DST offset. Falls back gracefully when offline.
+    Responzívny dashboard s real-time telemetriou cez **WebSockets**, grafmi histórie a podporou jazykov (EN/SK/PL/CS).
 
 -   :fontawesome-solid-network-wired: **Modbus RTU**
-
     ---
-
-    RS485 Modbus slave with fully configurable baud rate, parity and stop bits. Compatible with SCADA, Home Assistant and industrial systems.
+    Plnohodnotný RS485 Slave. Integrujte stepSOLAR do vášho SCADA systému, Loxone alebo Home Assistanta cez priemyselný štandard.
 
 -   :fontawesome-solid-microchip: **Dual-Core FreeRTOS**
-
     ---
-
-    Control loop (Core 0) is fully isolated from WiFi/TCP stack (Core 1). PWM and protection never blocked by network activity.
+    Riadiaca slučka beží na **Core 0**, kým WiFi/Web komunikácia na **Core 1**. Sieťová aktivita nikdy neovplyvní stabilitu PWM.
 
 -   :fontawesome-solid-home: **ESPHome / HA**
-
     ---
+    Natívna podpora pre **Home Assistant**. Všetky senzory a prepínače sú dostupné ako entity vďaka pripravenej YAML konfigurácii.
 
-    Native ESPHome YAML for direct Home Assistant integration. All sensors exposed as HA entities.
+-   :fontawesome-solid-clock: **NTP & Logovanie**
+    ---
+    Automatická synchronizácia času cez internet. Inteligentné logovanie chýb a prevádzkových stavov.
 
 </div>
 
-## Hardware at a Glance
+---
 
-| Component | Part | Interface |
-|-----------|------|-----------|
-| MCU | ESP32-S3-DevKitC-1 | — |
-| ADC | ADS1115 (16-bit) | I2C 0x48 |
-| EEPROM | 24LC256 (32kB) | I2C 0x50 |
-| PWM output | 2× LEDC 50Hz 11-bit | GPIO 17, 18 |
-| RS485 | MAX485 / SP3485 | UART2 |
-| Temperature | KTY81/210 NTC | ADS1115 ch2 |
+## Hardvérová špecifikácia
 
-## Quick Start
+| Komponent | Typ / Čip | Rozhranie |
+|:----------|:----------|:----------|
+| **MCU** | ESP32-S3-DevKitC-1 | 240MHz Dual-Core |
+| **ADC** | ADS1115 (16-bit) | I2C (0x48) |
+| **EEPROM** | 24LC256 (32kB) | I2C (0x50) |
+| **PWM Výstup** | 2× LEDC 50Hz | GPIO 17, 18 |
+| **RS485** | MAX485 / SP3485 | UART2 |
+| **Teplota** | KTY81/210 NTC | ADS1115 (Ch 2) |
+
+---
+
+## Rýchly štart (Quick Start)
+
+Ak máte hardvér pripravený, môžete začať týmito krokmi:
 
 ```bash
-# 1 — Clone
-git clone https://github.com/palo-krnac/stepSOLAR.git
+# 1 — Klonovanie repozitára
+git clone [https://github.com/palo-krnac/stepSOLAR.git](https://github.com/palo-krnac/stepSOLAR.git)
 cd stepSOLAR
 
-# 2 — Flash firmware
+# 2 — Nahranie firmware (PlatformIO)
 pio run -t upload
 
-# 3 — Flash web UI
+# 3 — Nahranie súborov Web rozhrania
 pio run -t uploadfs
 
-# 4 — Connect
-# AP: stepSOLAR / solar2024  →  http://192.168.4.1
-```
-
-[Full Quick Start Guide →](getting-started/quickstart.md){ .md-button .md-button--primary }
-[Hardware Overview →](hardware/overview.md){ .md-button }
+# 4 — Prvé pripojenie
+# WiFi AP: stepSOLAR  |  Heslo: solar2024  
+# Adresa: [http://192.168.4.1](http://192.168.4.1)

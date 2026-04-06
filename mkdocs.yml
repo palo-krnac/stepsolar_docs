@@ -11,8 +11,8 @@ copyright: "&copy; 2024 Palo Krnac — stepSOLAR"
 theme:
   name: material
   language: en
-  logo: assets/logo.svg
-  favicon: assets/favicon.png
+  logo: assets/stepSOLAR.svg
+  favicon: assets/stepSOLAR_favicon.png
 
   palette:
     # Svetlá téma (východzia)
