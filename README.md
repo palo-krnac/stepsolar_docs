@@ -14,7 +14,7 @@ stepSOLAR converts DC power from photovoltaic panels into AC rectangular wavefor
 
 | Component | Part |
 |-----------|------|
-| ![WSH500S_front](docs/assets/WSH500S_front.png) | ESP32-S3-DevKitC-1 (8 MB Flash) |
+| ![WSH500S_front](docs/assets/WSH500S_front.png) | ![WSH500S_back](docs/assets/WSH500S_back.png)|
 
 ## Features
 
