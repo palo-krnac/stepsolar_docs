@@ -12,6 +12,10 @@
 
 stepSOLAR converts DC power from photovoltaic panels into AC rectangular waveform with variable duty cycle to heat water in a boiler. It runs on ESP32-S3, implements MPPT (Perturb & Observe), and provides a responsive web dashboard with real-time monitoring.
 
+| Component | Part |
+|-----------|------|
+| ![WSH500S_front](docs/assets/WSH500S_front.png) | ESP32-S3-DevKitC-1 (8 MB Flash) |
+
 ## Features
 
 - ⚡ **MPPT P&O algorithm** with automatic VA curve scan
