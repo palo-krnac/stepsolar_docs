@@ -20,7 +20,7 @@ stepSOLAR converts DC power from photovoltaic panels into AC rectangular wavefor
 - 📡 **Modbus RTU slave** over RS485 — configurable baud/parity/stop
 - 🏠 **ESPHome / Home Assistant** integration
 - 🌍 **4 languages** — EN / SK / PL / CS
-- 💾 **24LC256 EEPROM** with wear-leveling for energy counter
+- 💾 **24LC64 EEPROM** with wear-leveling for energy counter
 - 🔧 **Dual-core FreeRTOS** — control on Core 0, WiFi on Core 1
 
 ## Hardware
@@ -29,7 +29,7 @@ stepSOLAR converts DC power from photovoltaic panels into AC rectangular wavefor
 |-----------|------|
 | MCU | ESP32-S3-DevKitC-1 (8 MB Flash) |
 | ADC | ADS1115 16-bit (I2C 0x48) |
-| EEPROM | 24LC256 32 kB (I2C 0x50) |
+| EEPROM | 24LC64 64 kB (I2C 0x50) |
 | PWM | 2× LEDC 50 Hz 11-bit (GPIO 17, 18) |
 | RS485 | MAX485 / SP3485 (UART2) |
 | Temp sensor | KTY81/210 NTC |
@@ -110,5 +110,3 @@ MIT — see [LICENSE](LICENSE)
 **Palo Krnac** — [github.com/palo-krnac](https://github.com/palo-krnac)
 
 ---
-
-*Port of the original SITON 210 Arduino Mini solar inverter controller.*
