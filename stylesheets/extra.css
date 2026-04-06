@@ -1,0 +1,159 @@
+/* ============================================================
+   stepSOLAR — Opravená, vysoko kontrastná téma
+   ============================================================ */
+
+:root {
+  /* NOVÁ: Stmavená, lepšie čitateľná zelená */
+  --brand-green: #1a7f17; 
+  /* NOVÁ: Jasnejšia zelená pre Dark Mode, aby bola viditeľná */
+  --brand-green-dark: #45D141; 
+
+  --brand-blue:  #0077b6;
+  --light-bg:    #f8fbf8;
+  --hero-text:   #2c3e50;
+}
+
+/* ── Globálne nastavenia & Svetlá téma (Čitateľnosť) ─── */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color:      #ffffff;
+  --md-default-fg-color:      #2c3e50; /* Tmavosivá pre text, nie čierna */
+  --md-header-bg-color:       #ffffff;
+  --md-header-fg-color:       var(--brand-green);
+  --md-code-bg-color:         #f1f3f5;
+  --md-typeset-a-color:       var(--brand-blue);
+  --hero-gradient: radial-gradient(circle at center, rgba(26, 127, 23, 0.04) 0%, transparent 70%);
+}
+
+/* ── Tmavá téma (Dark Mode) - "Slate" ───────────────── */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color:      #0f1710; /* Tmavozelený nádych čiernej */
+  --md-header-bg-color:       #0a0f0a;
+  --md-header-fg-color:       var(--brand-green-dark); /* Použijeme jasnejšiu zelenú */
+  --hero-text:                #d8edd8;
+  --hero-gradient: radial-gradient(circle at center, rgba(69, 209, 65, 0.08) 0%, transparent 70%);
+}
+
+/* ── Hero Section Styling ──────────────────────────── */
+.hero {
+  padding: 4rem 1rem;
+  text-align: center;
+  background: var(--hero-gradient);
+  margin: -1.5rem -0.8rem 2rem -0.8rem;
+  border-bottom: 1px solid rgba(26, 127, 23, 0.08);
+}
+
+.hero-title {
+  font-family: 'Inter', 'JetBrains Mono', sans-serif;
+  font-size: 4rem !important;
+  font-weight: 900 !important;
+  color: var(--brand-green) !important; /* Použije stmavenú zelenú */
+  margin-bottom: 0.5rem !important;
+  letter-spacing: -0.04em !important;
+  line-height: 1 !important;
+  border: none !important;
+}
+
+[data-md-color-scheme="slate"] .hero-title {
+  color: var(--brand-green-dark) !important; /* V Dark Mode jasná */
+}
+
+.hero-sub {
+  font-size: 1.3rem !important;
+  color: var(--hero-text);
+  max-width: 750px;
+  margin: 0 auto 2.5rem auto !important;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.hero-badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Tlačidlá (Buttons) ────────────────────────────── */
+.md-typeset .md-button {
+  border-radius: 8px;
+  padding: 0.6rem 1.6rem;
+  font-weight: 700;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-width: 2px;
+}
+
+.md-typeset .md-button--primary {
+  background-color: var(--brand-green);
+  border-color: var(--brand-green);
+  color: #fff !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary {
+  background-color: var(--brand-green-dark);
+  border-color: var(--brand-green-dark);
+  color: #000 !important; /* Čierny text na jasnej zelenej */
+}
+
+.md-typeset .md-button--primary:hover {
+  background-color: transparent;
+  color: var(--brand-green) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 127, 23, 0.2);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover {
+  color: var(--brand-green-dark) !important;
+  box-shadow: 0 4px 12px rgba(69, 209, 65, 0.3);
+}
+
+/* ── Tabuľky & Registre ────────────────────────────── */
+.md-typeset table:not([class]) {
+  border: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--light-bg);
+  color: var(--brand-green); /* Stmavená zelená pre nadpisy */
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: #1a261b;
+  color: var(--brand-green-dark); /* Jasná zelená v Dark Mode */
+}
+
+.reg-addr {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 119, 182, 0.1);
+  padding: 3px 8px;
+  border-radius: 5px;
+  color: var(--brand-blue);
+  font-weight: 700;
+}
+
+/* ── Ostatné detaily ───────────────────────────────── */
+.md-header {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.md-tabs {
+  background-color: var(--light-bg);
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: #0a0f0a;
+}
+
+/* Responzivita pre mobily */
+@media screen and (max-width: 45em) {
+  .hero-title { font-size: 2.5rem !important; }
+  .hero-sub { font-size: 1.1rem !important; }
+}
